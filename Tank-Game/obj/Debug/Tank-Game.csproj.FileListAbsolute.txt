@@ -1,0 +1,11 @@
+E:\VS Workspace\Tank-Game\Tank-Game\bin\Debug\Tank-Game.exe.config
+E:\VS Workspace\Tank-Game\Tank-Game\bin\Debug\Tank-Game.exe
+E:\VS Workspace\Tank-Game\Tank-Game\bin\Debug\Tank-Game.pdb
+E:\VS Workspace\Tank-Game\Tank-Game\obj\Debug\Tank-Game.csproj.AssemblyReference.cache
+E:\VS Workspace\Tank-Game\Tank-Game\obj\Debug\Tank-Game.csproj.SuggestedBindingRedirects.cache
+E:\VS Workspace\Tank-Game\Tank-Game\obj\Debug\Tank_Game.Properties.Resources.resources
+E:\VS Workspace\Tank-Game\Tank-Game\obj\Debug\Tank-Game.csproj.GenerateResource.cache
+E:\VS Workspace\Tank-Game\Tank-Game\obj\Debug\Tank-Game.csproj.CoreCompileInputs.cache
+E:\VS Workspace\Tank-Game\Tank-Game\obj\Debug\Tank-Game.exe
+E:\VS Workspace\Tank-Game\Tank-Game\obj\Debug\Tank-Game.pdb
+E:\VS Workspace\Tank-Game\Tank-Game\obj\Debug\Tank_Game.Form1.resources
