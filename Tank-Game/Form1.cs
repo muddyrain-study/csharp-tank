@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,6 +13,7 @@ namespace Tank_Game
 {
     public partial class Form1 : Form
     {
+        private Thread thread;
         public Form1()
         {
             InitializeComponent();
@@ -19,7 +21,20 @@ namespace Tank_Game
             // 开始位置居中
             this.StartPosition = FormStartPosition.CenterScreen;
 
-
+            // 阻塞
+            thread = new Thread(new ThreadStart(GameMainThread));
+            thread.Start();
+        }
+        public static void GameMainThread()
+        {
+            // GameFramework
+            GameFramework.Start();
+            int sleepTime = 1000 / 60;
+            while (true)
+            {
+                GameFramework.Update();
+                Thread.Sleep(sleepTime);
+            }
 
         }
 
@@ -27,22 +42,17 @@ namespace Tank_Game
         {
             Graphics g = this.CreateGraphics();
 
-            #region 画线
-            //g.DrawLine(new Pen(Color.Red, 2), new Point(0, 0), new Point(100, 100));
-            #endregion
-
-            //g.DrawString(
-            //    "Muddyrain",
-            //    new Font("微软雅黑", 20),
-            //    new SolidBrush(Color.Red),
-            //    new Point(100, 100)
-            //    );
             Image image = Properties.Resources.Boss;
 
             Bitmap bm = Properties.Resources.Star1;
             bm.MakeTransparent(Color.Black);
             g.DrawImage(image, 0, 0, 100, 100);
             g.DrawImage(bm, 100, 100, 100, 100);
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            thread.Abort();
         }
     }
 }
