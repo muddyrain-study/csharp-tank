@@ -22,6 +22,10 @@ namespace Tank_Game
             this.StartPosition = FormStartPosition.CenterScreen;
 
             // 阻塞
+
+            Graphics g = this.CreateGraphics();
+            GameFramework.g = g;
+
             thread = new Thread(new ThreadStart(GameMainThread));
             thread.Start();
         }
@@ -32,7 +36,8 @@ namespace Tank_Game
             int sleepTime = 1000 / 60;
             while (true)
             {
-                GameFramework.Update();
+                GameFramework.g.Clear(Color.Black);
+                GameFramework.Update(); // 60 FPS
                 Thread.Sleep(sleepTime);
             }
 
