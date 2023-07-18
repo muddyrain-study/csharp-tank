@@ -13,12 +13,14 @@ namespace Tank_Game
         public static void Start()
         {
             GameObjectManger.CreatMap();
+            GameObjectManger.CreateMyTank();
         }
 
         public static void Update()
         {
             // FPS
             GameObjectManger.DrawMap();
+            GameObjectManger.DrawTank();
         }
     }
 }

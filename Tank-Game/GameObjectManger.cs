@@ -13,6 +13,7 @@ namespace Tank_Game
         private static List<NotMovething> wallList = new List<NotMovething>();
         private static List<NotMovething> steelList = new List<NotMovething>();
         private static NotMovething boos;
+        private static MyTank myTank;
         public static void DrawMap()
         {
             foreach (NotMovething wall in wallList)
@@ -25,6 +26,18 @@ namespace Tank_Game
             }
 
             boos.DrawSelf();
+        }
+        public static void DrawTank()
+        {
+            myTank.DrawSelf();
+
+        }
+        public static void CreateMyTank()
+        {
+            int x = 5 * 30;
+            int y = 14 * 30;
+
+            myTank = new MyTank(x, y, 2);
         }
         public static void CreatMap()
         {
@@ -67,15 +80,15 @@ namespace Tank_Game
             CreateWall(13, 9, 5, Properties.Resources.wall, wallList);
 
             // 双层堡垒
-            //CreateWall(6, 13, 2, Properties.Resources.wall, wallList);
-            //CreateWall(7, 13, 1, Properties.Resources.wall, wallList);
-            //CreateWall(8, 13, 2, Properties.Resources.wall, wallList);
+            CreateWall(6, 13, 2, Properties.Resources.wall, wallList);
+            CreateWall(7, 13, 1, Properties.Resources.wall, wallList);
+            CreateWall(8, 13, 2, Properties.Resources.wall, wallList);
 
             // 单层堡垒
-            CreateSingleWall(13, 27, 3, Properties.Resources.wall, wallList);
-            CreateSingleWall(14, 27, 1, Properties.Resources.wall, wallList);
-            CreateSingleWall(15, 27, 1, Properties.Resources.wall, wallList);
-            CreateSingleWall(16, 27, 3, Properties.Resources.wall, wallList);
+            //CreateSingleWall(13, 27, 3, Properties.Resources.wall, wallList);
+            //CreateSingleWall(14, 27, 1, Properties.Resources.wall, wallList);
+            //CreateSingleWall(15, 27, 1, Properties.Resources.wall, wallList);
+            //CreateSingleWall(16, 27, 3, Properties.Resources.wall, wallList);
             createBoos(7, 14, Properties.Resources.Boss);
         }
 
