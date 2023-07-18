@@ -66,10 +66,16 @@ namespace Tank_Game
             CreateWall(11, 9, 5, Properties.Resources.wall, wallList);
             CreateWall(13, 9, 5, Properties.Resources.wall, wallList);
 
-            CreateWall(6, 13, 2, Properties.Resources.wall, wallList);
-            CreateWall(7, 13, 1, Properties.Resources.wall, wallList);
-            CreateWall(8, 13, 2, Properties.Resources.wall, wallList);
+            // 双层堡垒
+            //CreateWall(6, 13, 2, Properties.Resources.wall, wallList);
+            //CreateWall(7, 13, 1, Properties.Resources.wall, wallList);
+            //CreateWall(8, 13, 2, Properties.Resources.wall, wallList);
 
+            // 单层堡垒
+            CreateSingleWall(13, 27, 3, Properties.Resources.wall, wallList);
+            CreateSingleWall(14, 27, 1, Properties.Resources.wall, wallList);
+            CreateSingleWall(15, 27, 1, Properties.Resources.wall, wallList);
+            CreateSingleWall(16, 27, 3, Properties.Resources.wall, wallList);
             createBoos(7, 14, Properties.Resources.Boss);
         }
 
@@ -79,17 +85,30 @@ namespace Tank_Game
             int yPosition = y * 30;
             boos = new NotMovething(xPosition, yPosition, img);
         }
-        private static void CreateWall(int x, int y, int count, Image img, List<NotMovething> wallList, int size = 30)
+        private static void CreateWall(int x, int y, int count, Image img, List<NotMovething> wallList)
         {
+            int size = 30;
             int xPosition = x * size;
             int yPosition = y * size;
             for (int i = yPosition; i < yPosition + count * size; i += (size / 2))
             {
                 // i xPosition   i xPosition + 15
                 NotMovething wall1 = new NotMovething(xPosition, i, img);
-                NotMovething wall2 = new NotMovething(xPosition + (size / 2), i, img);
                 wallList.Add(wall1);
+                NotMovething wall2 = new NotMovething(xPosition + (size / 2), i, img);
                 wallList.Add(wall2);
+            }
+        }
+        private static void CreateSingleWall(int x, int y, int count, Image img, List<NotMovething> wallList)
+        {
+            int size = 15;
+            int xPosition = x * size;
+            int yPosition = y * size;
+            for (int i = yPosition; i < yPosition + count * size; i += (size))
+            {
+                // i xPosition   i xPosition + 15
+                NotMovething wall1 = new NotMovething(xPosition, i, img);
+                wallList.Add(wall1);
             }
         }
     }
