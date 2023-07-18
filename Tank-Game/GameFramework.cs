@@ -13,13 +13,14 @@ namespace Tank_Game
         public static void Start()
         {
             Console.WriteLine("GameFramework Start");
+            GameObjectManger.CreatMap();
         }
 
         public static void Update()
         {
             // FPS
             Console.WriteLine("GameFramework Update");
-
+            GameObjectManger.DrawMap();
         }
     }
 }

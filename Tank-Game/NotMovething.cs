@@ -19,5 +19,12 @@ namespace Tank_Game
             return Img;
         }
 
+        public NotMovething(int x, int y, Image img)
+        {
+            this.X = x;
+            this.Y = y;
+            this.Img = img;
+        }
+
     }
 }

@@ -43,18 +43,6 @@ namespace Tank_Game
 
         }
 
-        private void Form1_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = this.CreateGraphics();
-
-            Image image = Properties.Resources.Boss;
-
-            Bitmap bm = Properties.Resources.Star1;
-            bm.MakeTransparent(Color.Black);
-            g.DrawImage(image, 0, 0, 100, 100);
-            g.DrawImage(bm, 100, 100, 100, 100);
-        }
-
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             thread.Abort();
