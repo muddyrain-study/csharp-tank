@@ -8,12 +8,15 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Tank_Game
 {
     public partial class Form1 : Form
     {
         private Thread thread;
+        private static Graphics windowG;
+        private static Bitmap tmpBitmap;
         public Form1()
         {
             InitializeComponent();
@@ -22,10 +25,11 @@ namespace Tank_Game
             this.StartPosition = FormStartPosition.CenterScreen;
 
             // 阻塞
+            windowG = this.CreateGraphics();
 
-            Graphics g = this.CreateGraphics();
-            GameFramework.g = g;
-
+            tmpBitmap = new Bitmap(450, 450);
+            Graphics bmpG = Graphics.FromImage(tmpBitmap);
+            GameFramework.g = bmpG;
             thread = new Thread(new ThreadStart(GameMainThread));
             thread.Start();
         }
@@ -38,6 +42,7 @@ namespace Tank_Game
             {
                 GameFramework.g.Clear(Color.Black);
                 GameFramework.Update(); // 60 FPS
+                windowG.DrawImage(tmpBitmap, 0, 0);
                 Thread.Sleep(sleepTime);
             }
 
