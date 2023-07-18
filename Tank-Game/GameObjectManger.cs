@@ -15,24 +15,22 @@ namespace Tank_Game
         private static List<NotMovething> steelList = new List<NotMovething>();
         private static NotMovething boos;
         private static MyTank myTank;
-        public static void DrawMap()
+
+        public static void Update()
         {
             foreach (NotMovething wall in wallList)
             {
-                wall.DrawSelf();
+                wall.Update();
             }
             foreach (NotMovething steel in steelList)
             {
-                steel.DrawSelf();
+                steel.Update();
             }
 
-            boos.DrawSelf();
+            boos.Update();
+            myTank.Update();
         }
-        public static void DrawTank()
-        {
-            myTank.DrawSelf();
 
-        }
         public static void CreateMyTank()
         {
             int x = 5 * 30;

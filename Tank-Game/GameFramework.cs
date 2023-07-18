@@ -20,8 +20,7 @@ namespace Tank_Game
         public static void Update()
         {
             // FPS
-            GameObjectManger.DrawMap();
-            GameObjectManger.DrawTank();
+            GameObjectManger.Update();
         }
 
     }

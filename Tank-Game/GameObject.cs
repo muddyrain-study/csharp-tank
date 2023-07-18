@@ -19,5 +19,10 @@ namespace Tank_Game
 
             g.DrawImage(GetImage(), X, Y);
         }
+        public virtual void Update()
+        {
+            DrawSelf();
+        }
     }
+
 }

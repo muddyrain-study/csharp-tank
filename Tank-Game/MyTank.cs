@@ -69,5 +69,34 @@ namespace Tank_Game
 
             }
         }
+
+        public override void Update()
+        {
+            Move();
+            base.Update();
+
+        }
+        public void Move()
+        {
+            if (this.IsMoving == false) return;
+
+            switch (this.Dir)
+            {
+                case Direction.Up:
+                    Y -= Speed;
+                    break;
+                case Direction.Down:
+                    Y += Speed;
+                    break;
+                case Direction.Left:
+                    X -= Speed;
+                    break;
+                case Direction.Right:
+                    X += Speed;
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
