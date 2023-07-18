@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Tank_Game
 {
@@ -22,5 +23,6 @@ namespace Tank_Game
             GameObjectManger.DrawMap();
             GameObjectManger.DrawTank();
         }
+
     }
 }

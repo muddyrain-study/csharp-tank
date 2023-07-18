@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Tank_Game
 {
@@ -123,6 +124,15 @@ namespace Tank_Game
                 NotMovething wall1 = new NotMovething(xPosition, i, img);
                 wallList.Add(wall1);
             }
+        }
+
+        public static void KeyDown(KeyEventArgs e)
+        {
+            myTank.KeyDown(e);
+        }
+        public static void KeyUp(KeyEventArgs e)
+        {
+            myTank.KeyUp(e);
         }
     }
 }
