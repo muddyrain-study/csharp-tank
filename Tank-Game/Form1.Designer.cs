@@ -37,6 +37,9 @@
             this.ClientSize = new System.Drawing.Size(450, 450);
             this.Name = "Form1";
             this.Text = "坦克大战";
+            this.MaximizeBox = false;
+            // 固定窗口大小
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.ResumeLayout(false);
 
