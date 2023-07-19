@@ -54,8 +54,15 @@ namespace Tank_Game
                 }
                 if (bitmap != null)
                 {
-                    Width = bitmap.Width;
-                    Height = bitmap.Height;
+                    try
+                    {
+                        Width = bitmap.Width;
+                        Height = bitmap.Height;
+                    }
+                    catch (Exception)
+                    {
+
+                    }
                 }
             }
         }

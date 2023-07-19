@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -137,6 +138,39 @@ namespace Tank_Game
             }
 
             // 检查有没有和其他元素发生碰撞
+            Rectangle rect = GetRectangle();
+            switch (Dir)
+            {
+                case Direction.Up:
+                    rect.Y -= Speed;
+                    break;
+                case Direction.Down:
+                    rect.Y += Speed;
+                    break;
+                case Direction.Left:
+                    rect.X -= Speed;
+                    break;
+                case Direction.Right:
+                    rect.X += Speed;
+                    break;
+                default:
+                    break;
+            }
+            if (GameObjectManger.IsColliedWall(rect) != null)
+            {
+                IsMoving = false;
+                return;
+            }
+            if (GameObjectManger.IsColliedSteel(rect) != null)
+            {
+                IsMoving = false;
+                return;
+            }
+            if (GameObjectManger.IsColliedBoos(rect))
+            {
+                IsMoving = false;
+                return;
+            }
         }
     }
 }

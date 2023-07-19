@@ -30,7 +30,35 @@ namespace Tank_Game
             boos.Update();
             myTank.Update();
         }
-
+        // 是否碰撞 砖墙
+        public static NotMovething IsColliedWall(Rectangle rt)
+        {
+            foreach (NotMovething wall in wallList)
+            {
+                if (wall.GetRectangle().IntersectsWith(rt))
+                {
+                    return wall;
+                }
+            }
+            return null;
+        }
+        // 是否碰撞 钢墙
+        public static NotMovething IsColliedSteel(Rectangle rt)
+        {
+            foreach (NotMovething steel in steelList)
+            {
+                if (steel.GetRectangle().IntersectsWith(rt))
+                {
+                    return steel;
+                }
+            }
+            return null;
+        }
+        // 是否碰撞 Boos
+        public static bool IsColliedBoos(Rectangle rt)
+        {
+            return boos.GetRectangle().IntersectsWith(rt);
+        }
         public static void CreateMyTank()
         {
             int x = 5 * 30;
@@ -79,15 +107,15 @@ namespace Tank_Game
             CreateWall(13, 9, 5, Properties.Resources.wall, wallList);
 
             // 双层堡垒
-            CreateWall(6, 13, 2, Properties.Resources.wall, wallList);
-            CreateWall(7, 13, 1, Properties.Resources.wall, wallList);
-            CreateWall(8, 13, 2, Properties.Resources.wall, wallList);
+            //CreateWall(6, 13, 2, Properties.Resources.wall, wallList);
+            //CreateWall(7, 13, 1, Properties.Resources.wall, wallList);
+            //CreateWall(8, 13, 2, Properties.Resources.wall, wallList);
 
             // 单层堡垒
-            //CreateSingleWall(13, 27, 3, Properties.Resources.wall, wallList);
-            //CreateSingleWall(14, 27, 1, Properties.Resources.wall, wallList);
-            //CreateSingleWall(15, 27, 1, Properties.Resources.wall, wallList);
-            //CreateSingleWall(16, 27, 3, Properties.Resources.wall, wallList);
+            CreateSingleWall(13, 27, 3, Properties.Resources.wall, wallList);
+            CreateSingleWall(14, 27, 1, Properties.Resources.wall, wallList);
+            CreateSingleWall(15, 27, 1, Properties.Resources.wall, wallList);
+            CreateSingleWall(16, 27, 3, Properties.Resources.wall, wallList);
             createBoos(7, 14, Properties.Resources.Boss);
         }
 

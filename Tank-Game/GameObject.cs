@@ -26,6 +26,10 @@ namespace Tank_Game
         {
             DrawSelf();
         }
+        public Rectangle GetRectangle()
+        {
+            return new Rectangle(X, Y, Width, Height);
+        }
     }
 
 }
