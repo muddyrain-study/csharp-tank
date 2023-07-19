@@ -13,9 +13,18 @@ namespace Tank_Game
     {
         private static List<NotMovething> wallList = new List<NotMovething>();
         private static List<NotMovething> steelList = new List<NotMovething>();
+        private static List<EnemyTank> tankList = new List<EnemyTank>();
         private static NotMovething boos;
         private static MyTank myTank;
-
+        private static int enemyTankSpeed = 60;
+        private static int enemyTankCount = 0;
+        private static Point[] points = new Point[3];
+        public static void Start()
+        {
+            points[0] = new Point(0, 0);
+            points[1] = new Point(7 * 30, 0);
+            points[2] = new Point(14 * 30, 0);
+        }
         public static void Update()
         {
             foreach (NotMovething wall in wallList)
@@ -26,10 +35,84 @@ namespace Tank_Game
             {
                 steel.Update();
             }
-
+            foreach (EnemyTank tank in tankList)
+            {
+                tank.Update();
+            }
             boos.Update();
             myTank.Update();
+
+            EnemyBorn();
         }
+        public static void EnemyBorn()
+        {
+            enemyTankCount++;
+            if (enemyTankCount < enemyTankSpeed)
+            {
+                return;
+            }
+            // 产生敌人
+            Random r = new Random();
+            // 0-2 
+            int index = r.Next(0, 3);
+            Point position = points[index];
+            int enemyType = r.Next(1, 5);
+            switch (enemyType)
+            {
+                case 1:
+                    CreateEnmey1(position.X, position.Y);
+                    break;
+                case 2:
+                    CreateEnmey2(position.X, position.Y);
+                    break;
+                case 3:
+                    CreateEnmey3(position.X, position.Y);
+                    break;
+                case 4:
+                    CreateEnmey4(position.X, position.Y);
+                    break;
+                default:
+                    break;
+            }
+            enemyTankCount = 0;
+        }
+        private static void CreateEnmey1(int x, int y)
+        {
+            EnemyTank tank = new EnemyTank(x, y, 2,
+                Properties.Resources.GrayDown,
+                Properties.Resources.GrayUp,
+                Properties.Resources.GrayLeft,
+                Properties.Resources.GrayRight);
+            tankList.Add(tank);
+        }
+        private static void CreateEnmey2(int x, int y)
+        {
+            EnemyTank tank = new EnemyTank(x, y, 2,
+                Properties.Resources.GreenDown,
+                Properties.Resources.GreenUp,
+                Properties.Resources.GreenLeft,
+                Properties.Resources.GreenRight);
+            tankList.Add(tank);
+        }
+        private static void CreateEnmey3(int x, int y)
+        {
+            EnemyTank tank = new EnemyTank(x, y, 4,
+                Properties.Resources.QuickDown,
+                Properties.Resources.QuickUp,
+                Properties.Resources.QuickLeft,
+                Properties.Resources.QuickRight);
+            tankList.Add(tank);
+        }
+        private static void CreateEnmey4(int x, int y)
+        {
+            EnemyTank tank = new EnemyTank(x, y, 1,
+                Properties.Resources.SlowDown,
+                Properties.Resources.SlowUp,
+                Properties.Resources.SlowLeft,
+                Properties.Resources.SlowRight);
+            tankList.Add(tank);
+        }
+
         // 是否碰撞 砖墙
         public static NotMovething IsColliedWall(Rectangle rt)
         {

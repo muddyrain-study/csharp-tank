@@ -10,7 +10,6 @@ namespace Tank_Game
 {
     internal class MyTank : Movething
     {
-        public bool IsMoving { get; set; }
         public MyTank(int x, int y, int speed)
         {
             this.IsMoving = false;
