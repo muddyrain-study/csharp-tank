@@ -12,7 +12,20 @@ namespace Tank_Game
      */
     internal class NotMovething : GameObject
     {
-        public Image Img { get; set; }
+        public Image img;
+        public Image Img
+        {
+            get
+            {
+                return img;
+            }
+            set
+            {
+                img = value;
+                Width = img.Width;
+                Height = img.Height;
+            }
+        }
 
         protected override Image GetImage()
         {

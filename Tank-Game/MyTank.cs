@@ -72,6 +72,8 @@ namespace Tank_Game
 
         public override void Update()
         {
+            // 移动检查
+            MoveCheck();
             Move();
             base.Update();
 
@@ -97,6 +99,44 @@ namespace Tank_Game
                 default:
                     break;
             }
+        }
+        private void MoveCheck()
+        {
+            // 检查有没有超出窗体边界
+            if (Dir == Direction.Up)
+            {
+                if (Y - Speed < 0)
+                {
+                    IsMoving = false;
+                    return;
+                }
+            }
+            else if (Dir == Direction.Down)
+            {
+                if (Y + Speed + Height > 450)
+                {
+                    IsMoving = false;
+                    return;
+                }
+            }
+            else if (Dir == Direction.Left)
+            {
+                if (X - Speed < 0)
+                {
+                    IsMoving = false;
+                    return;
+                }
+            }
+            else if (Dir == Direction.Right)
+            {
+                if (X + Speed + Width > 450)
+                {
+                    IsMoving = false;
+                    return;
+                }
+            }
+
+            // 检查有没有和其他元素发生碰撞
         }
     }
 }

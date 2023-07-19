@@ -12,6 +12,9 @@ namespace Tank_Game
         public int X { get; set; }
         public int Y { get; set; }
 
+        public int Width { get; set; }
+        public int Height { get; set; }
+
         abstract protected Image GetImage();
         public void DrawSelf()
         {

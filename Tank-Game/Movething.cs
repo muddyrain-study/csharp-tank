@@ -26,7 +26,39 @@ namespace Tank_Game
 
         public int Speed { get; set; }
 
-        public Direction Dir { get; set; }
+        public Direction dir;
+        public Direction Dir
+        {
+            get
+            {
+                return dir;
+            }
+            set
+            {
+                dir = value;
+                Bitmap bitmap = null;
+                switch (value)
+                {
+                    case Direction.Up:
+                        bitmap = BitmapUp;
+                        break;
+                    case Direction.Down:
+                        bitmap = BitmapDown;
+                        break;
+                    case Direction.Left:
+                        bitmap = BitmapLeft;
+                        break;
+                    case Direction.Right:
+                        bitmap = BitmapRight;
+                        break;
+                }
+                if (bitmap != null)
+                {
+                    Width = bitmap.Width;
+                    Height = bitmap.Height;
+                }
+            }
+        }
 
         protected override Image GetImage()
         {
