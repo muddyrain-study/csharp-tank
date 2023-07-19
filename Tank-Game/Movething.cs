@@ -19,6 +19,7 @@ namespace Tank_Game
      */
     internal class Movething : GameObject
     {
+        private Object _look = new Object();
         public Bitmap BitmapUp { get; set; }
         public Bitmap BitmapDown { get; set; }
         public Bitmap BitmapLeft { get; set; }
@@ -56,14 +57,10 @@ namespace Tank_Game
                 }
                 if (bitmap != null)
                 {
-                    try
+                    lock (_look)
                     {
                         Width = bitmap.Width;
                         Height = bitmap.Height;
-                    }
-                    catch (Exception)
-                    {
-
                     }
                 }
             }
@@ -91,8 +88,16 @@ namespace Tank_Game
 
             }
             bitmap.MakeTransparent(Color.Black);
+            //Width = bitmap.Width;
+            //Height = bitmap.Height;   
             return bitmap;
         }
-
+        public override void DrawSelf()
+        {
+            lock (_look)
+            {
+                base.DrawSelf();
+            }
+        }
     }
 }
