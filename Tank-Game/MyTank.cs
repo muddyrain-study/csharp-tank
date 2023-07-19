@@ -46,10 +46,38 @@ namespace Tank_Game
                     Dir = Direction.Right;
                     IsMoving = true;
                     break;
+                case Keys.Space:
+                    Attack();
+                    break;
                 default:
                     break;
 
             }
+        }
+        private void Attack()
+        {
+            // 发射子弹
+            int x = this.X;
+            int y = this.Y;
+
+            switch (Dir)
+            {
+                case Direction.Up:
+                    x += this.Width / 2;
+                    break;
+                case Direction.Down:
+                    x += this.Width / 2;
+                    y += this.Height;
+                    break;
+                case Direction.Left:
+                    y += this.Height / 2;
+                    break;
+                case Direction.Right:
+                    x += this.Width;
+                    y += this.Height / 2;
+                    break;
+            }
+            GameObjectManger.CreateBullet(x, y, Dir, Tag.MyTank);
         }
         public void KeyUp(KeyEventArgs e)
         {

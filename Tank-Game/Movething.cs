@@ -62,7 +62,7 @@ namespace Tank_Game
                         Width = bitmap.Width;
                         Height = bitmap.Height;
                     }
-                }
+                }   
             }
         }
 
@@ -88,8 +88,8 @@ namespace Tank_Game
 
             }
             bitmap.MakeTransparent(Color.Black);
-            //Width = bitmap.Width;
-            //Height = bitmap.Height;   
+            Width = bitmap.Width;
+            Height = bitmap.Height;
             return bitmap;
         }
         public override void DrawSelf()

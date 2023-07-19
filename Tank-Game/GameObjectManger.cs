@@ -14,6 +14,7 @@ namespace Tank_Game
         private static List<NotMovething> wallList = new List<NotMovething>();
         private static List<NotMovething> steelList = new List<NotMovething>();
         private static List<EnemyTank> tankList = new List<EnemyTank>();
+        private static List<Bullet> bulletList = new List<Bullet>();
         private static NotMovething boos;
         private static MyTank myTank;
         private static int enemyTankSpeed = 60;
@@ -39,10 +40,19 @@ namespace Tank_Game
             {
                 tank.Update();
             }
+            foreach (Bullet bullet in bulletList)
+            {
+                bullet.Update();
+            }
             boos.Update();
             myTank.Update();
 
             EnemyBorn();
+        }
+        public static void CreateBullet(int x, int y, Direction dir, Tag tag)
+        {
+            Bullet bullet = new Bullet(x, y, 5, dir, tag);
+            bulletList.Add(bullet);
         }
         public static void EnemyBorn()
         {
