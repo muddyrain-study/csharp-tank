@@ -9,18 +9,21 @@ using System.Windows.Forms;
 namespace Tank_Game
 {
     internal class MyTank : Movething
+
     {
+        public bool IsMoving { get; set; }
+
         public MyTank(int x, int y, int speed)
         {
             this.IsMoving = false;
             this.X = x;
             this.Y = y;
             this.Speed = speed;
-            this.Dir = Direction.Up;
             BitmapDown = Properties.Resources.MyTankDown;
             BitmapUp = Properties.Resources.MyTankUp;
             BitmapLeft = Properties.Resources.MyTankLeft;
             BitmapRight = Properties.Resources.MyTankRight;
+            this.Dir = Direction.Up;
         }
 
         public void KeyDown(KeyEventArgs e)

@@ -24,7 +24,6 @@ namespace Tank_Game
         public Bitmap BitmapLeft { get; set; }
         public Bitmap BitmapRight { get; set; }
 
-        public bool IsMoving { get; set; }
 
 
         public int Speed { get; set; }
