@@ -15,6 +15,7 @@ namespace Tank_Game
         private static List<NotMovething> steelList = new List<NotMovething>();
         private static List<EnemyTank> tankList = new List<EnemyTank>();
         private static List<Bullet> bulletList = new List<Bullet>();
+        private static List<Explosion> expList = new List<Explosion>();
         private static NotMovething boos;
         private static MyTank myTank;
         private static int enemyTankSpeed = 60;
@@ -40,6 +41,10 @@ namespace Tank_Game
             {
                 tank.Update();
             }
+            foreach (Explosion exp in expList)
+            {
+                exp.Update();
+            }
             CheckAndDestoryBullet();
             for (int i = 0; i < bulletList.Count; i++)
             {
@@ -64,6 +69,11 @@ namespace Tank_Game
             {
                 bulletList.Remove(bullet);
             }
+        }
+        public static void CreateExplosion(int x, int y)
+        {
+            Explosion exp = new Explosion(x, y);
+            expList.Add(exp);
         }
         public static void CreateBullet(int x, int y, Direction dir, Tag tag)
         {

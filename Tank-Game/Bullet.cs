@@ -107,11 +107,15 @@ namespace Tank_Game
 
             // 1. 墙 2. 钢墙 3. 坦克
             // 为了让子弹和坦克的碰撞更加真实，子弹的碰撞检测区域要小一点
+            int xExplosion = this.X + Width / 2;
+            int yExplosion = this.Y + Height / 2;
+
             NotMovething wall = null;
             if ((wall = GameObjectManger.IsColliedWall(rect)) != null)
             {
                 IsDestory = true;
                 GameObjectManger.DestoryWall(wall);
+                GameObjectManger.CreateExplosion(xExplosion, yExplosion);
                 return;
             }
 
