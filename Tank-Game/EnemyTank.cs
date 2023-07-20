@@ -9,6 +9,10 @@ namespace Tank_Game
 {
     internal class EnemyTank : Movething
     {
+        public int ChangeDirSpeed { get; set; }
+        private int changeDirCount = 0; // 用于计算改变方向的间隔
+        public int AttackSpeed { get; set; }
+        private int attackCount = 0; // 用于计算攻击间隔
         private Random r = new Random();
         public EnemyTank(
             int x, int y, int speed,
@@ -22,12 +26,16 @@ namespace Tank_Game
             BitmapLeft = BmpLeft;
             BitmapRight = BmpRight;
             this.Dir = Direction.Down;
+            this.AttackSpeed = 60;
+            this.ChangeDirSpeed = 60;
         }
         public override void Update()
         {
             // 移动检查
             MoveCheck();
             Move();
+            AttackCheck();
+            AutoChangeDirection();
             base.Update();
 
         }
@@ -124,6 +132,16 @@ namespace Tank_Game
                 return;
             }
         }
+        private void AutoChangeDirection()
+        {
+            // 改变方向检查
+            changeDirCount++;
+            if (changeDirCount >= ChangeDirSpeed)
+            {
+                ChangeDirection();
+                changeDirCount = 0;
+            }
+        }
         private void ChangeDirection()
         {
             Direction dir = (Direction)r.Next(0, 4);
@@ -132,6 +150,41 @@ namespace Tank_Game
                 this.Dir = dir;
             }
             MoveCheck();
+        }
+        private void AttackCheck()
+        {
+            // 攻击检查
+            attackCount++;
+            if (attackCount >= AttackSpeed)
+            {
+                Attack();
+                attackCount = 0;
+            }
+        }
+        private void Attack()
+        {
+            // 发射子弹
+            int x = this.X;
+            int y = this.Y;
+
+            switch (Dir)
+            {
+                case Direction.Up:
+                    x += this.Width / 2;
+                    break;
+                case Direction.Down:
+                    x += this.Width / 2;
+                    y += this.Height;
+                    break;
+                case Direction.Left:
+                    y += this.Height / 2;
+                    break;
+                case Direction.Right:
+                    x += this.Width;
+                    y += this.Height / 2;
+                    break;
+            }
+            GameObjectManger.CreateBullet(x, y, Dir, Tag.EnemyTank);
         }
     }
 }
