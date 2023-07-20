@@ -127,7 +127,7 @@ namespace Tank_Game
             }
             if (GameObjectManger.IsColliedBoos(rect))
             {
-                //ChangeDirection();
+                GameFramework.ChangeToGameOver();
                 return;
             }
 
