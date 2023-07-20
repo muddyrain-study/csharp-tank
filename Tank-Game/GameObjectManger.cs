@@ -107,11 +107,16 @@ namespace Tank_Game
         }
         public static void EnemyBorn()
         {
+            if (tankList.Count >= 5)
+            {
+                return;
+            }
             enemyTankCount++;
             if (enemyTankCount < enemyTankSpeed)
             {
                 return;
             }
+            SoundManager.PlayAdd();
             // 产生敌人
             Random r = new Random();
             // 0-2 

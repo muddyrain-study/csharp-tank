@@ -62,6 +62,7 @@ namespace Tank_Game
         }
         private void Attack()
         {
+            SoundManager.PlayFire();
             // 发射子弹
             int x = this.X;
             int y = this.Y;

@@ -19,9 +19,11 @@ namespace Tank_Game
         public static Graphics g;
         public static void Start()
         {
+            SoundManager.InitSound();
             GameObjectManger.Start();
             GameObjectManger.CreatMap();
             GameObjectManger.CreateMyTank();
+            SoundManager.PlayStart();
         }
 
         public static void Update()

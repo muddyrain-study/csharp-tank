@@ -116,6 +116,7 @@ namespace Tank_Game
                 IsDestory = true;
                 GameObjectManger.DestoryWall(wall);
                 GameObjectManger.CreateExplosion(xExplosion, yExplosion);
+                SoundManager.PlayBlastd();
                 return;
             }
 
@@ -128,6 +129,7 @@ namespace Tank_Game
             if (GameObjectManger.IsColliedBoos(rect))
             {
                 GameFramework.ChangeToGameOver();
+                SoundManager.PlayBlastd();
                 return;
             }
 
@@ -139,6 +141,7 @@ namespace Tank_Game
                     IsDestory = true;
                     GameObjectManger.DestoryTank(tank);
                     GameObjectManger.CreateExplosion(xExplosion, yExplosion);
+                    SoundManager.PlayHit();
                     return;
                 }
             }
