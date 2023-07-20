@@ -83,54 +83,58 @@ namespace Tank_Game
             }
             else if (Dir == Direction.Left)
             {
-                if (X - Speed < 0)
+                if (X + Width / 2 + 3 < 0)
                 {
-                    //ChangeDirection();
+                    IsDestory = true;
                     return;
                 }
             }
             else if (Dir == Direction.Right)
             {
-                if (X + Speed + Width > 450)
+                if (X + Width / 2 - 3 > 450)
                 {
-                    //ChangeDirection();    
+                    IsDestory = true;
                     return;
                 }
             }
 
             // 检查有没有和其他元素发生碰撞
             Rectangle rect = GetRectangle();
-            switch (Dir)
+            rect.X = X + Width / 2 - 3;
+            rect.Y = Y + Height / 2 - 3;
+            rect.Width = 3;
+            rect.Height = 3;
+
+            // 1. 墙 2. 钢墙 3. 坦克
+            // 为了让子弹和坦克的碰撞更加真实，子弹的碰撞检测区域要小一点
+            NotMovething wall = null;
+            if ((wall = GameObjectManger.IsColliedWall(rect)) != null)
             {
-                case Direction.Up:
-                    rect.Y -= Speed;
-                    break;
-                case Direction.Down:
-                    rect.Y += Speed;
-                    break;
-                case Direction.Left:
-                    rect.X -= Speed;
-                    break;
-                case Direction.Right:
-                    rect.X += Speed;
-                    break;
-                default:
-                    break;
-            }
-            if (GameObjectManger.IsColliedWall(rect) != null)
-            {
-                //ChangeDirection();
+                IsDestory = true;
+                GameObjectManger.DestoryWall(wall);
                 return;
             }
+
             if (GameObjectManger.IsColliedSteel(rect) != null)
             {
-                //ChangeDirection();
+                IsDestory = true;
                 return;
             }
             if (GameObjectManger.IsColliedBoos(rect))
             {
                 //ChangeDirection();
                 return;
+            }
+
+            if (Tag == Tag.MyTank)
+            {
+                EnemyTank tank = null;
+                if ((tank = GameObjectManger.IsColliedEnmeyTank(rect)) != null)
+                {
+                    IsDestory = true;
+                    GameObjectManger.DestoryTank(tank);
+                    return;
+                }
             }
         }
     }

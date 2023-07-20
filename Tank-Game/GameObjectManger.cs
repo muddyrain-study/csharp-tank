@@ -71,7 +71,14 @@ namespace Tank_Game
             bulletList.Add(bullet);
         }
 
-
+        public static void DestoryWall(NotMovething wall)
+        {
+            wallList.Remove(wall);
+        }
+        public static void DestoryTank(EnemyTank tank)
+        {
+            tankList.Remove(tank);
+        }
         public static void EnemyBorn()
         {
             enemyTankCount++;
@@ -170,6 +177,19 @@ namespace Tank_Game
         {
             return boos.GetRectangle().IntersectsWith(rt);
         }
+        // 是否碰撞 敌人坦克
+        public static EnemyTank IsColliedEnmeyTank(Rectangle rt)
+        {
+            foreach (EnemyTank tank in tankList)
+            {
+                if (tank.GetRectangle().IntersectsWith(rt))
+                {
+                    return tank;
+                }
+            }
+            return null;
+        }
+
         public static void CreateMyTank()
         {
             int x = 5 * 30;
