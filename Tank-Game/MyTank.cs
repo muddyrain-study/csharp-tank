@@ -216,6 +216,7 @@ namespace Tank_Game
             {
                 this.X = this.originX;
                 this.Y = this.originY;
+                this.HP = 4;
             }
         }
     }
