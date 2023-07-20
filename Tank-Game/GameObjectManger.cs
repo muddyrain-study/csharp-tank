@@ -25,7 +25,7 @@ namespace Tank_Game
         {
             points[0] = new Point(0, 0);
             points[1] = new Point(7 * 30, 0);
-            points[2] = new Point(14 * 30, 0);
+            points[2] = new Point(14 * 30, 0);  
         }
         public static void Update()
         {
@@ -107,10 +107,10 @@ namespace Tank_Game
         }
         public static void EnemyBorn()
         {
-            if (tankList.Count >= 5)
-            {
-                return;
-            }
+            //if (tankList.Count >= 100)
+            //{
+            //    return;
+            //} 
             enemyTankCount++;
             if (enemyTankCount < enemyTankSpeed)
             {
@@ -252,17 +252,17 @@ namespace Tank_Game
             CreateWall(14, 7, 1, Properties.Resources.steel, steelList);
 
 
-            CreateWall(2, 7, 1, Properties.Resources.wall, wallList);
-            CreateWall(3, 7, 1, Properties.Resources.wall, wallList);
-            CreateWall(4, 7, 1, Properties.Resources.wall, wallList);
+            //CreateWall(2, 7, 1, Properties.Resources.wall, wallList);
+            //CreateWall(3, 7, 1, Properties.Resources.wall, wallList);
+            //CreateWall(4, 7, 1, Properties.Resources.wall, wallList);
 
             CreateWall(6, 7, 1, Properties.Resources.wall, wallList);
             CreateWall(7, 6, 2, Properties.Resources.wall, wallList);
             CreateWall(8, 7, 1, Properties.Resources.wall, wallList);
 
-            CreateWall(10, 7, 1, Properties.Resources.wall, wallList);
-            CreateWall(11, 7, 1, Properties.Resources.wall, wallList);
-            CreateWall(12, 7, 1, Properties.Resources.wall, wallList);
+            //CreateWall(10, 7, 1, Properties.Resources.wall, wallList);
+            //CreateWall(11, 7, 1, Properties.Resources.wall, wallList);
+            //CreateWall(12, 7, 1, Properties.Resources.wall, wallList);
 
 
 

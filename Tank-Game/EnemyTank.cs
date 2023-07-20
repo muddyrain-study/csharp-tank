@@ -147,6 +147,21 @@ namespace Tank_Game
             Direction dir = (Direction)r.Next(0, 4);
             if (dir != this.Dir)
             {
+                if (dir == Direction.Right || dir == Direction.Right)
+                {
+                    if (r.Next(0, 4) < 2)
+                    {
+                        this.Dir = Direction.Down;
+                        MoveCheck();
+                        return;
+                    }
+                    else
+                    {
+                        this.Dir = dir;
+                        MoveCheck();
+                        return;
+                    }
+                }
                 this.Dir = dir;
             }
             MoveCheck();

@@ -152,6 +152,7 @@ namespace Tank_Game
                 {
                     IsDestory = true;
                     tank.TankDamage();
+                    SoundManager.PlayHit();
                 }
             }
         }
