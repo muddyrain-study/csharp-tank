@@ -11,19 +11,25 @@ namespace Tank_Game
     internal class MyTank : Movething
 
     {
+        public int HP { get; set; }
         public bool IsMoving { get; set; }
+        private int originX;
+        private int originY;
 
         public MyTank(int x, int y, int speed)
         {
             this.IsMoving = false;
             this.X = x;
             this.Y = y;
+            this.originX = x;
+            this.originY = y;
             this.Speed = speed;
             BitmapDown = Properties.Resources.MyTankDown;
             BitmapUp = Properties.Resources.MyTankUp;
             BitmapLeft = Properties.Resources.MyTankLeft;
             BitmapRight = Properties.Resources.MyTankRight;
             this.Dir = Direction.Up;
+            this.HP = 4;
         }
 
         public void KeyDown(KeyEventArgs e)
@@ -200,6 +206,15 @@ namespace Tank_Game
             {
                 IsMoving = false;
                 return;
+            }
+        }
+        public void TankDamage()
+        {
+            this.HP--;
+            if (HP <= 0)
+            {
+                this.X = this.originX;
+                this.Y = this.originY;
             }
         }
     }

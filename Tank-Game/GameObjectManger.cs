@@ -203,6 +203,15 @@ namespace Tank_Game
         {
             return boos.GetRectangle().IntersectsWith(rt);
         }
+        // 是否碰撞 我的坦克
+        public static MyTank IsColliedMyTank(Rectangle rt)
+        {
+            if (myTank.GetRectangle().IntersectsWith(rt))
+            {
+                return myTank;
+            }
+            return null;
+        }
         // 是否碰撞 敌人坦克
         public static EnemyTank IsColliedEnmeyTank(Rectangle rt)
         {

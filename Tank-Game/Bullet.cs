@@ -137,9 +137,18 @@ namespace Tank_Game
                 if ((tank = GameObjectManger.IsColliedEnmeyTank(rect)) != null)
                 {
                     IsDestory = true;
-                    GameObjectManger.DestoryTank(tank);     
+                    GameObjectManger.DestoryTank(tank);
                     GameObjectManger.CreateExplosion(xExplosion, yExplosion);
                     return;
+                }
+            }
+            else
+            {
+                MyTank tank;
+                if ((tank = GameObjectManger.IsColliedMyTank(rect)) != null)
+                {
+                    IsDestory = true;
+                    tank.TankDamage();
                 }
             }
         }
