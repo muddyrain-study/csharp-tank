@@ -40,20 +40,38 @@ namespace Tank_Game
             {
                 tank.Update();
             }
-            foreach (Bullet bullet in bulletList)
+            CheckAndDestoryBullet();
+            for (int i = 0; i < bulletList.Count; i++)
             {
-                bullet.Update();
+                bulletList[i].Update();
             }
             boos.Update();
             myTank.Update();
 
             EnemyBorn();
         }
+        public static void CheckAndDestoryBullet()
+        {
+            List<Bullet> needToDestory = new List<Bullet>();
+            foreach (Bullet bullet in bulletList)
+            {
+                if (bullet.IsDestory)
+                {
+                    needToDestory.Add(bullet);
+                }
+            }
+            foreach (Bullet bullet in needToDestory)
+            {
+                bulletList.Remove(bullet);
+            }
+        }
         public static void CreateBullet(int x, int y, Direction dir, Tag tag)
         {
             Bullet bullet = new Bullet(x, y, 5, dir, tag);
             bulletList.Add(bullet);
         }
+
+
         public static void EnemyBorn()
         {
             enemyTankCount++;

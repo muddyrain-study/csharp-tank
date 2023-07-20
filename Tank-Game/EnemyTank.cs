@@ -31,15 +31,7 @@ namespace Tank_Game
             base.Update();
 
         }
-        private void ChangeDirection()
-        {
-            Direction dir = (Direction)r.Next(0, 4);
-            if (dir != this.Dir)
-            {
-                this.Dir = dir;
-            }
-            MoveCheck();
-        }
+
         public void Move()
         {
 
@@ -131,6 +123,15 @@ namespace Tank_Game
                 ChangeDirection();
                 return;
             }
+        }
+        private void ChangeDirection()
+        {
+            Direction dir = (Direction)r.Next(0, 4);
+            if (dir != this.Dir)
+            {
+                this.Dir = dir;
+            }
+            MoveCheck();
         }
     }
 }
