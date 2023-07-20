@@ -122,6 +122,7 @@ namespace Tank_Game
             if (GameObjectManger.IsColliedSteel(rect) != null)
             {
                 IsDestory = true;
+                GameObjectManger.CreateExplosion(xExplosion, yExplosion);
                 return;
             }
             if (GameObjectManger.IsColliedBoos(rect))
@@ -132,11 +133,12 @@ namespace Tank_Game
 
             if (Tag == Tag.MyTank)
             {
-                EnemyTank tank = null;
+                EnemyTank tank;
                 if ((tank = GameObjectManger.IsColliedEnmeyTank(rect)) != null)
                 {
                     IsDestory = true;
-                    GameObjectManger.DestoryTank(tank);
+                    GameObjectManger.DestoryTank(tank);     
+                    GameObjectManger.CreateExplosion(xExplosion, yExplosion);
                     return;
                 }
             }

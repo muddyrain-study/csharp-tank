@@ -9,6 +9,7 @@ namespace Tank_Game
 {
     internal class Explosion : GameObject
     {
+        public bool IsDestory { get; set; }
         private int playSpeed = 2;
         private int playCount = -1;
         private int index = 0;
@@ -26,6 +27,7 @@ namespace Tank_Game
             {
                 bmp.MakeTransparent(Color.Black);
             }
+            this.IsDestory = false;
             this.X = x - bmpArray[0].Width / 2;
             this.Y = y - bmpArray[0].Height / 2;
         }
@@ -41,6 +43,10 @@ namespace Tank_Game
         {
             playCount++;
             index = (playCount - 1) / playSpeed;
+            if (index > 4)
+            {
+                IsDestory = true;
+            }
             base.Update();
         }
 

@@ -46,6 +46,7 @@ namespace Tank_Game
                 exp.Update();
             }
             CheckAndDestoryBullet();
+            CheckAndDestoryExplosion();
             for (int i = 0; i < bulletList.Count; i++)
             {
                 bulletList[i].Update();
@@ -54,6 +55,21 @@ namespace Tank_Game
             myTank.Update();
 
             EnemyBorn();
+        }
+        public static void CheckAndDestoryExplosion()
+        {
+            List<Explosion> needToDestory = new List<Explosion>();
+            foreach (Explosion bullet in expList)
+            {
+                if (bullet.IsDestory)
+                {
+                    needToDestory.Add(bullet);
+                }
+            }
+            foreach (Explosion exp in needToDestory)
+            {
+                expList.Remove(exp);
+            }
         }
         public static void CheckAndDestoryBullet()
         {
